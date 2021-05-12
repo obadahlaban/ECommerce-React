@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.redBorder {
+  border: 1px solid red;
+}
+
+.height1000 {
+  height: 100vh;
+}
