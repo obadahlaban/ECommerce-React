@@ -1,18 +1,20 @@
 import React, {useState} from "react";
 import {Link, Route, Switch} from 'react-router-dom';
-import {APIConfig} from "../app/API-Config";
+import {APIConfig} from "../store/API-Config";
 import Items from "./Items";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import Review from "../components/Review";
 import ShippingAddress from "../components/adresses/ShippingAddress";
-import {LogIn} from "../app/LogIn";
-import {AllProducts} from "../app/AllProducts";
+import {LogIn} from "../store/LogIn";
+import {AllProducts} from "../store/AllProducts";
 import Clothes from "../components/buyerComponent/Clothes";
 import Electronics from "../components/buyerComponent/Electronics";
+import {LikedPosts} from "../store/LikedPosts";
 
 
 const BuyerBlog = () => {
     const [username, setUsername] = useState(false);
+    const [likedProduct,setLikedProduct] = useState([]);
     const [products, setproducts] = useState([
         {
             product_id: 1,
@@ -45,7 +47,7 @@ const BuyerBlog = () => {
             product_id: 4,
             productName: "T-shirt",
             description: "good phone",
-            image: "https://picsum.photos/800",
+            image: "https://i.imgur.com/1GrakTl.jpg",
             isSold: false,
             price: 500,
             category: "Clothes"
@@ -56,6 +58,7 @@ const BuyerBlog = () => {
         <APIConfig.Provider value={'http://localhost:8080/posts/'}>
             <LogIn.Provider value={{username, setUsername}}>
                 <AllProducts.Provider value={{products, setproducts}}>
+                    <LikedPosts.Provider value={{likedProduct,setLikedProduct}}>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <div className="container-fluid">
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -119,6 +122,7 @@ const BuyerBlog = () => {
                             </div>
                         </div>
                     </div>
+                    </LikedPosts.Provider>
                 </AllProducts.Provider>
             </LogIn.Provider>
         </APIConfig.Provider>

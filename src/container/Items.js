@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
-import {APIConfig} from "../app/API-Config";
+import {APIConfig} from "../store/API-Config";
 import Item from "../components/Item";
-import {AllProducts} from "../app/AllProducts";
+import {AllProducts} from "../store/AllProducts";
 
 
 

@@ -1,18 +1,18 @@
-import React from "react";
+import React, {useContext} from "react";
 
-const CartItem = () => {
 
+const CartItem = (props) => {
   return (
       <div className="row border-top border-bottom">
           <div className="row main align-items-center">
-              <div className="col-2"><img className="img-fluid" src="https://i.imgur.com/1GrakTl.jpg" alt="image"/></div>
+              <div className="col-2"><img className="img-fluid" src={props.image} alt="image"/></div>
               <div className="col">
-                  <div className="row text-muted">Shirt</div>
-                  <div className="row">Cotton T-shirt</div>
+                  <div className="row text-muted">{props.category}</div>
+                  <div className="row">{props.productName}</div>
               </div>
               <div className="col"><a href="">-</a><a href="" className="border">1</a><a href="">+</a>
               </div>
-              <div className="col">$ 44.00 <span className="close">&#10005;</span></div>
+              <div className="col">$ {props.price} <span className="close">&#10005;</span></div>
           </div>
       </div>
 

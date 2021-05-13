@@ -1,10 +1,35 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./ShoppingCart.css";
 import CartItem from "../../components/CartItem";
 import {Link} from "react-router-dom";
 import ShippingAddress from "../../components/adresses/ShippingAddress";
+import {LikedPosts} from "../../store/LikedPosts";
+import {AllProducts} from "../../store/AllProducts";
+import Item from "../../components/Item";
 
-const ShoppingCart = () => {
+const ShoppingCart = (props) => {
+    const {likedProduct, setLikedProduct} = useContext(LikedPosts);
+    const {products, setProduct} = useContext(AllProducts);
+
+    const rCart = products.filter(item => item.id === likedProduct.id).map(product => {
+
+            return (
+                <div>
+                    <CartItem
+                        id={product.product_id}
+                        productName={product.productName}
+                        description={product.description}
+                        image={product.image}
+                        isSold={product.isSold}
+                        price={product.price}
+                        category={product.category}
+                    />
+                </div>
+            )
+
+
+        }
+    )
 
     return (
         <div className="row">
@@ -19,7 +44,8 @@ const ShoppingCart = () => {
                 </div>
                 <CartItem></CartItem>
                 <div>
-                    <Link to = "/posts" />Back to shop</div>
+                    <Link to="/posts"/>Back to shop
+                </div>
             </div>
             <div className="col-md-4 summary">
                 <div>
@@ -31,7 +57,9 @@ const ShoppingCart = () => {
                     <div className="col text-right">$ 132.00</div>
                 </div>
                 <div>
-                    <p><button type="button" onClick={ShippingAddress}> Shipping Address </button></p>
+                    <p>
+                        <button type="button" onClick={ShippingAddress}> Shipping Address</button>
+                    </p>
                     <div><input type="checkbox"/> Billing Address</div>
 
                 </div>

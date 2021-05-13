@@ -1,6 +1,6 @@
 import React, {useContext} from "react";
 import {Link} from "react-router-dom";
-import {LogIn} from "../app/LogIn";
+import {LogIn} from "../store/LogIn";
 
 const SignIn = (props) => {
     const {username, setUsername} = useContext(LogIn);

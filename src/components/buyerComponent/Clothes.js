@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import {AllProducts} from "../../app/AllProducts";
+import {AllProducts} from "../../store/AllProducts";
 import Item from "../Item";
 
 

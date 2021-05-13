@@ -2,13 +2,13 @@ import React, {useContext, useState} from "react";
 
 import SignIn from "./SignIn";
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
-import {APIConfig} from "../app/API-Config";
+import {APIConfig} from "../store/API-Config";
 import SignUp from "../components/SignUp";
 import Items from "./Items";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import Review from "../components/Review";
 import ShippingAddress from "../components/adresses/ShippingAddress";
-import {LogIn} from "../app/LogIn";
+import {LogIn} from "../store/LogIn";
 import AddItem from "../components/sellerComponent/AddItem";
 import MyItem from "../components/sellerComponent/MyItem";
 import BuyersReviews from "../components/sellerComponent/BuyersReviews";
