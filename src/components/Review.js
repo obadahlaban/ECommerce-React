@@ -28,7 +28,7 @@ const Review = (props) => {
                     <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target={"#collapse"+props.id} aria-expanded="false" aria-controls={"collapse"+props.id}>
 
-                    Reviews {props.itemId}
+                    Reviews
                     </button>
                 </h2>
                 <div id={"collapse"+props.id} className="accordion-collapse collapse" aria-labelledby={"heading" + props.id}

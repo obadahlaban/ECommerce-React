@@ -14,7 +14,7 @@ const ShoppingCart = () => {
             return (
                 <div>
                     <CartItem
-                        id={product.product_id}
+                        id={product.id}
                         productName={product.productName}
                         description={product.description}
                         image={product.image}
@@ -42,7 +42,7 @@ const ShoppingCart = () => {
                 </div>
                 {rCart}
                 <div>
-                    <Link to="/posts"/>Back to shop
+                    <Link to="/buyer/items">Back to shop</Link>
                 </div>
             </div>
             <div className="col-md-5 summary">
@@ -73,7 +73,7 @@ const ShoppingCart = () => {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">New Shipping Address</h5>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"/>
                             </div>
@@ -88,7 +88,7 @@ const ShoppingCart = () => {
                     <div className="modal-dialog">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <h5 className="modal-title" id="exampleModalLabel">New Billing Address</h5>
                                 <button type="button" className="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"/>
                             </div>

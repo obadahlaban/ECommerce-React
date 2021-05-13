@@ -1,43 +1,31 @@
-import React, {useContext, useState} from "react";
-import {APIConfig} from "../store/API-Config";
+import React, {useContext} from "react";
 import Item from "../components/Item";
-import {AllProducts} from "../store/AllProducts";
 
+const Items = (props) => {
 
-
-const Items = () => {
-    const {products, setProduct}= useContext(AllProducts);
-
-
-    const rProducts = products.map(product => {
+    const rProducts = props.items.map(product => {
         return (
             <div className="col-6">
-            <Item
-                id={product.product_id}
-                productName={product.productName}
-                description={product.description}
-                image={product.image}
-                isSold={product.isSold}
-                price={product.price}
-                category={product.category}
+                <Item
+                    id={product.product_id}
+                    productName={product.productName}
+                    description={product.description}
+                    image={product.image}
+                    isSold={product.isSold}
+                    price={product.price}
+                    category={product.category}
                 />
             </div>
         )
-
     });
 
-   const APIs= useContext(APIConfig);
     return (
-        <div className="container redBorder">
+        <div className="container">
             <div className="row align-items-start ">
                 {rProducts}
             </div>
         </div>
-
-
-
     )
-
 }
 
 export default Items;

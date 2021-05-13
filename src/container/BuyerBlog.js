@@ -1,64 +1,22 @@
 import React, {useState} from "react";
 import {Link, Route, Switch} from 'react-router-dom';
 import {APIConfig} from "../store/API-Config";
-import Items from "./Items";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
-import Review from "../components/Review";
 import ShippingAddress from "../components/adresses/ShippingAddress";
 import {LogIn} from "../store/LogIn";
-import {AllProducts} from "../store/AllProducts";
-import Clothes from "../components/buyerComponent/Clothes";
-import Electronics from "../components/buyerComponent/Electronics";
 import {LikedPosts} from "../store/LikedPosts";
+import AllItemsPage from "../pages/AllItemsPage";
+import CategoryItemsPage from "../pages/CategoryItemsPage";
 
 
 const BuyerBlog = () => {
     const [username, setUsername] = useState(false);
-    const [likedProduct,setLikedProduct] = useState([]);
-    const [products, setproducts] = useState([
-        {
-            product_id: 1,
-            productName: "iphone",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 500,
-            category: "Electronics"
-        },
-        {
-            product_id: 2,
-            productName: "Pant",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 500,
-            category: "Clothes"
-        },
-        {
-            product_id: 3,
-            productName: "iphone",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 600,
-            category: "Electronics"
-        },
-        {
-            product_id: 4,
-            productName: "T-shirt",
-            description: "good phone",
-            image: "https://i.imgur.com/1GrakTl.jpg",
-            isSold: false,
-            price: 500,
-            category: "Clothes"
-        }
-    ]);
+    const [likedProduct, setLikedProduct] = useState([]);
 
     return (
         <APIConfig.Provider value={'http://localhost:8080/posts/'}>
             <LogIn.Provider value={{username, setUsername}}>
-                <AllProducts.Provider value={{products, setproducts}}>
-                    <LikedPosts.Provider value={{likedProduct,setLikedProduct}}>
+                <LikedPosts.Provider value={{likedProduct, setLikedProduct}}>
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
                         <div className="container-fluid">
                             <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -74,9 +32,9 @@ const BuyerBlog = () => {
                                     <li className="nav-item">
                                         <Link to="/buyer/shoppingCart" className="nav-link">Shopping</Link>
                                     </li>
-                                    <li className="nav-item">
-                                        <Link to="/buyer/reviews" className="nav-link">Reviews</Link>
-                                    </li>
+                                    {/*<li className="nav-item">*/}
+                                    {/*    <Link to="/buyer/reviews" className="nav-link">Reviews</Link>*/}
+                                    {/*</li>*/}
                                     <li className="nav-item dropdown">
                                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown"
                                            role="button"
@@ -84,8 +42,14 @@ const BuyerBlog = () => {
                                             Categories
                                         </a>
                                         <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li className="dropdown-item"><Link to="/buyer/electronics">Electronics</Link></li>
-                                            <li className="dropdown-item"><Link to="/buyer/clothes" >Clothes</Link></li>
+                                            <Link
+                                                to="/buyer/electronics">
+                                                <li className="dropdown-item">Electronics</li>
+                                            </Link>
+                                            <Link to="/buyer/clothes">
+                                                <li className="dropdown-item">Clothes
+                                                </li>
+                                            </Link>
 
                                         </ul>
                                     </li>
@@ -109,10 +73,14 @@ const BuyerBlog = () => {
                                 <div className="col-8">
                                     <Switch>
                                         <Route path="/buyer/shipping" component={ShippingAddress}/>
-                                        <Route path="/buyer/reviews" component={Review}/>
-                                        <Route path="/buyer/items" component={Items}/>
-                                        <Route path="/buyer/clothes" component={Clothes}/>
-                                        <Route path="/buyer/electronics" component={Electronics}/>
+                                        {/*<Route path="/buyer/reviews" component={Review}/>*/}
+                                        <Route path="/buyer/items" component={AllItemsPage}/>
+                                        <Route path="/buyer/clothes">
+                                            <CategoryItemsPage category="clothes"/>
+                                        </Route>
+                                        <Route path="/buyer/electronics">
+                                            <CategoryItemsPage category="electronics"/>
+                                        </Route>
 
 
                                         <Route path="/buyer/shoppingCart" component={ShoppingCart}/>
@@ -122,8 +90,7 @@ const BuyerBlog = () => {
                             </div>
                         </div>
                     </div>
-                    </LikedPosts.Provider>
-                </AllProducts.Provider>
+                </LikedPosts.Provider>
             </LogIn.Provider>
         </APIConfig.Provider>
 
