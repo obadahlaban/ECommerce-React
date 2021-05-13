@@ -4,15 +4,13 @@ import CartItem from "../../components/CartItem";
 import {Link} from "react-router-dom";
 import ShippingAddress from "../../components/adresses/ShippingAddress";
 import {LikedPosts} from "../../store/LikedPosts";
-import {AllProducts} from "../../store/AllProducts";
-import Item from "../../components/Item";
+import BillingAddress from "../../components/adresses/BillingAddress";
 
-const ShoppingCart = (props) => {
-    const {likedProduct, setLikedProduct} = useContext(LikedPosts);
-    const {products, setProduct} = useContext(AllProducts);
+const ShoppingCart = () => {
+    const {likedProduct} = useContext(LikedPosts);
+    const totalPrice = likedProduct.reduce((acc, likedProduct) => acc + likedProduct.price, 0);
 
-    const rCart = products.filter(item => item.id === likedProduct.id).map(product => {
-
+    const rCart = likedProduct.map(product => {
             return (
                 <div>
                     <CartItem
@@ -33,42 +31,76 @@ const ShoppingCart = (props) => {
 
     return (
         <div className="row">
-            <div className="col-md-8 cart">
+            <div className="col-md-7 cart border">
                 <div className="title">
                     <div className="row">
                         <div className="col">
                             <h4><b>Shopping Cart</b></h4>
                         </div>
-                        <div className="col align-self-center text-right text-muted">3 items</div>
+                        <div className="col align-self-center text-right text-muted">{likedProduct.length} items</div>
                     </div>
                 </div>
-                <CartItem></CartItem>
+                {rCart}
                 <div>
                     <Link to="/posts"/>Back to shop
                 </div>
             </div>
-            <div className="col-md-4 summary">
+            <div className="col-md-5 summary">
                 <div>
                     <h5><b>Summary</b></h5>
                 </div>
-                <hr></hr>
+                <hr/>
                 <div className="row">
-                    <div className="col">ITEMS 3</div>
-                    <div className="col text-right">$ 132.00</div>
+                    <div className="col">ITEMS {likedProduct.length}</div>
+                    <div className="col text-right">${totalPrice}</div>
                 </div>
-                <div>
-                    <p>
-                        <button type="button" onClick={ShippingAddress}> Shipping Address</button>
-                    </p>
-                    <div><input type="checkbox"/> Billing Address</div>
-
+                <div className="row mt-3 justify-content-between">
+                    <div className="col">
+                        <button type="button" className="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
+                            Shipping Address
+                        </button>
+                    </div>
+                    <div className="col">
+                        <button type="button" className="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#billingModal">
+                            Billing Address
+                        </button>
+                    </div>
                 </div>
-                <hr></hr>
-                <div className="row">
-                    <div className="col">TOTAL PRICE</div>
-                    <div className="col text-right">$ 137.00</div>
+                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"/>
+                            </div>
+                            <div className="modal-body">
+                                <ShippingAddress/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <button className="mt-2 btn btn-primary">CHECKOUT</button>
+                <div className="modal fade" id="billingModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"/>
+                            </div>
+                            <div className="modal-body">
+                                <BillingAddress/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mt-4 d-grid gap-2">
+                    <button className="btn btn-primary btn-success">Checkout</button>
+                </div>
             </div>
         </div>
     )

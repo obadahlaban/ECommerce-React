@@ -5,9 +5,7 @@ const ShippingAddress = () => {
 
     return (
 
-            <form  className="w-50 position-absolute top-50 start-50 translate-middle row g-3 needs-validation">
-                <h1> Shipping Address</h1>
-                <hr></hr>
+            <form className="row g-3 needs-validation">
                 <div className="col-md-6">
                     <label htmlFor="validationCustom02" className="form-label">Street Address</label>
                     <input type="text" className="form-control" id="validationCustom02" required/>
