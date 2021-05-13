@@ -12,7 +12,7 @@ const CartItem = () => {
               </div>
               <div className="col"><a href="">-</a><a href="" className="border">1</a><a href="">+</a>
               </div>
-              <div className="col">&euro; 44.00 <span className="close">&#10005;</span></div>
+              <div className="col">$ 44.00 <span className="close">&#10005;</span></div>
           </div>
       </div>
 

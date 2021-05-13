@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 
 import SignIn from "./SignIn";
 import {Link, Redirect, Route, Switch} from 'react-router-dom';
@@ -7,11 +7,16 @@ import SignUp from "../components/SignUp";
 import Items from "./Items";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
 import Review from "../components/Review";
+import ShippingAddress from "../components/adresses/ShippingAddress";
+import {LogIn} from "../app/LogIn";
 
-const Blog = () => {
+
+const BuyerBlog = () => {
+    const [username, setUsername] = useState(false);
 
     return (
         <APIConfig.Provider value={'http://localhost:8080/posts/'}>
+            <LogIn.Provider value={{username, setUsername}}>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <div className="container-fluid">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -22,13 +27,13 @@ const Blog = () => {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link to="/posts" className="nav-link" >All Items</Link>
+                                <Link to="/buyer/posts" className="nav-link" >All Items</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/shoppingCart" className="nav-link" >Shopping</Link>
+                                <Link to="/buyer/shoppingCart" className="nav-link" >Shopping</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/reviews" className="nav-link" >Reviews</Link>
+                                <Link to="/buyer/reviews" className="nav-link" >Reviews</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -43,9 +48,15 @@ const Blog = () => {
                             </li>
                         </ul>
                         <form className="d-flex">
-                            <Link to="/shoppingCart" className="nav-link" >Shopping</Link>
-                            <Link to="/signIn" className="nav-link" >Sign In</Link>
+                            <Link to="/buyer/shoppingCart" className="nav-link" >Shopping</Link>
+
+
+
+                                <label className="nav-link"><Link to="/signIn">Sign In </Link></label>
+
+
                         </form>
+
                     </div>
                 </div>
             </nav>
@@ -55,17 +66,18 @@ const Blog = () => {
                     <div className="row justify-content-center">
                         <div className="col-8">
                             <Switch>
-                                <Route path="/reviews" component={Review}/>
-                                <Route path="/posts" component={Items}/>
-                                <Route path="/signIn" component={SignIn}/>
-                                <Route path="/signUp" component={SignUp}/>
-                                <Route path="/shoppingCart" component={ShoppingCart}/>
-                                <Redirect from="/" to="/posts/"/>
+                                <Route path="/buyer/shipping" component={ShippingAddress}/>
+                                <Route path="/buyer/reviews" component={Review}/>
+                                <Route path="/buyer/posts" component={Items}/>
+
+                                <Route path="/buyer/shoppingCart" component={ShoppingCart}/>
+                             {/*   <Redirect from="/" to="/posts/"/>*/}
                             </Switch>
                         </div>
                     </div>
                 </div>
             </div>
+            </LogIn.Provider>
         </APIConfig.Provider>
 
 
@@ -74,4 +86,4 @@ const Blog = () => {
 
 }
 
-export default Blog;
+export default BuyerBlog;

@@ -7,6 +7,8 @@ const handleSubmit = () => {
     return (
 
         <form className="w-50 position-absolute top-50 start-50 translate-middle row g-3 needs-validation" onSubmit={handleSubmit}>
+            <h1>New User </h1>
+            <hr></hr>
             <div className="col-md-4">
                 <label htmlFor="validationCustom01" className="form-label">First name</label>
                 <input type="text" className="form-control" id="validationCustom01"  required/>
@@ -29,30 +31,20 @@ const handleSubmit = () => {
 
                 </div>
             </div>
-            <div className="col-md-6">
-                <label htmlFor="validationCustom03" className="form-label">City</label>
-                <input type="text" className="form-control" id="validationCustom03" required/>
-                    <div className="invalid-feedback">
-                        Please provide a valid city.
-                    </div>
-            </div>
-            <div className="col-md-3">
-                <label htmlFor="validationCustom04" className="form-label">State</label>
-                <select className="form-select" id="validationCustom04" required>
-                    <option selected disabled value="">Choose...</option>
-                    <option>Iowa</option>
-                </select>
-                <div className="invalid-feedback">
-                    Please select a valid state.
+
+            <div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                           value="option1"/>
+                        <label className="form-check-label" htmlFor="inlineRadio1">Seller</label>
+                </div>
+                <div className="form-check form-check-inline">
+                    <input className="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                           value="option2"/>
+                        <label className="form-check-label" htmlFor="inlineRadio2">Buyer</label>
                 </div>
             </div>
-            <div className="col-md-3">
-                <label htmlFor="validationCustom05" className="form-label">Zip</label>
-                <input type="text" className="form-control" id="validationCustom05" required/>
-                    <div className="invalid-feedback">
-                        Please provide a valid zip.
-                    </div>
-            </div>
+
 
             <div className="col-12">
                 <button className="btn btn-primary" type="submit">SignUp </button>

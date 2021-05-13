@@ -1,6 +1,8 @@
 import React from "react";
 import "./ShoppingCart.css";
 import CartItem from "../../components/CartItem";
+import {Link} from "react-router-dom";
+import ShippingAddress from "../../components/adresses/ShippingAddress";
 
 const ShoppingCart = () => {
 
@@ -16,8 +18,8 @@ const ShoppingCart = () => {
                     </div>
                 </div>
                 <CartItem></CartItem>
-                <div className="back-to-shop"><a href="#">&leftarrow;</a><span
-                    className="text-muted">Back to shop</span></div>
+                <div>
+                    <Link to = "/posts" />Back to shop</div>
             </div>
             <div className="col-md-4 summary">
                 <div>
@@ -26,19 +28,19 @@ const ShoppingCart = () => {
                 <hr></hr>
                 <div className="row">
                     <div className="col">ITEMS 3</div>
-                    <div className="col text-right">&euro; 132.00</div>
+                    <div className="col text-right">$ 132.00</div>
                 </div>
-                <form>
-                    <p>SHIPPING Address</p>
+                <div>
+                    <p><button type="button" onClick={ShippingAddress}> Shipping Address </button></p>
                     <div><input type="checkbox"/> Billing Address</div>
 
-                </form>
+                </div>
                 <hr></hr>
                 <div className="row">
                     <div className="col">TOTAL PRICE</div>
-                    <div className="col text-right">&euro; 137.00</div>
+                    <div className="col text-right">$ 137.00</div>
                 </div>
-                <button className="btn">CHECKOUT</button>
+                <button className="mt-2 btn btn-primary">CHECKOUT</button>
             </div>
         </div>
     )
