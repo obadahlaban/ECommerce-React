@@ -1,20 +1,36 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {APIConfig} from "../app/API-Config";
 import Item from "../components/Item";
+import {AllProducts} from "../app/AllProducts";
+
 
 
 const Items = () => {
+    const {products, setProduct}= useContext(AllProducts);
+
+
+    const rProducts = products.map(product => {
+        return (
+            <div className="col-6">
+            <Item
+                id={product.product_id}
+                productName={product.productName}
+                description={product.description}
+                image={product.image}
+                isSold={product.isSold}
+                price={product.price}
+                category={product.category}
+                />
+            </div>
+        )
+
+    });
+
    const APIs= useContext(APIConfig);
     return (
         <div className="container redBorder">
             <div className="row align-items-start ">
-                {
-                    ([1, 2, 3, 4, 5, 6, 7]).map(
-                        i => <div className="col-4 mt-4">
-                            <Item/>
-                        </div>
-                    )
-                }
+                {rProducts}
             </div>
         </div>
 
