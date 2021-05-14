@@ -1,7 +1,9 @@
 import React from "react";
 
 const ShippingAddress = () => {
-
+    const clickHandler = {
+        //add address to the back-end
+    }
 
     return (
 
@@ -39,7 +41,7 @@ const ShippingAddress = () => {
                 </div>
 
                 <div className="col-12">
-                    <button className="btn btn-primary" type="submit">Done </button>
+                    <button className="btn btn-primary" onClick={clickHandler}>Done </button>
                 </div>
             </form>
 

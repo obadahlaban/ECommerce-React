@@ -2,6 +2,10 @@ import React from "react";
 
 const BillingAddress = () => {
 
+    const clickHandler = {
+        //add address to the back-end
+    }
+
 return (
 
 
@@ -39,7 +43,7 @@ return (
         </div>
 
         <div className="col-12">
-            <button className="btn btn-primary" type="submit">Done </button>
+            <button className="btn btn-primary" onClick={clickHandler}>Done </button>
         </div>
     </form>
 )

@@ -5,9 +5,10 @@ import {Link} from "react-router-dom";
 import ShippingAddress from "../../components/adresses/ShippingAddress";
 import {LikedPosts} from "../../store/LikedPosts";
 import BillingAddress from "../../components/adresses/BillingAddress";
+import BillingInformation from "../../components/BillingInformation";
 
 const ShoppingCart = () => {
-    const {likedProduct} = useContext(LikedPosts);
+    const {likedProduct, setLikedProduct} = useContext(LikedPosts);
     const totalPrice = likedProduct.reduce((acc, likedProduct) => acc + likedProduct.price, 0);
 
     const rCart = likedProduct.map(product => {
@@ -28,6 +29,13 @@ const ShoppingCart = () => {
 
         }
     )
+    const checkoutHandler = () => {
+
+        setLikedProduct(likedProduct.filter(p => p.id === 0));
+        window.alert("The order has been purchased");
+
+
+    }
 
     return (
         <div className="row">
@@ -68,6 +76,13 @@ const ShoppingCart = () => {
                         </button>
                     </div>
                 </div>
+                <div className="col mt-2">
+                    <button type="button" className="btn btn-secondary" data-bs-toggle="modal"
+                            data-bs-target="#cardModal">
+                        Card Information
+                    </button>
+                </div>
+
                 <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                      aria-hidden="true">
                     <div className="modal-dialog">
@@ -98,8 +113,25 @@ const ShoppingCart = () => {
                         </div>
                     </div>
                 </div>
+                <div className="modal fade" id="cardModal" tabIndex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id="exampleModalLabel">Card Information</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"/>
+                            </div>
+                            <div className="modal-body">
+                                <BillingInformation/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div className="mt-4 d-grid gap-2">
-                    <button className="btn btn-primary btn-success">Checkout</button>
+
+                    <button className="btn btn-primary btn-success" onClick={checkoutHandler}>Checkout</button>
+
                 </div>
             </div>
         </div>

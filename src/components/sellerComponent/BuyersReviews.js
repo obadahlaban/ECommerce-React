@@ -6,7 +6,7 @@ const BuyersReviews = () => {
 
     return (
 
-        <div>hiiiiiii</div>
+        <div>Reviews</div>
     )
 
 

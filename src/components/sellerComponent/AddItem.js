@@ -1,5 +1,6 @@
 import React, {useRef} from "react";
 import ProductAPI from "../../services/ProductAPI";
+import MyItem from "./MyItem";
 
 
 export default function AddItem() {
@@ -13,6 +14,7 @@ export default function AddItem() {
             image: form["image"].value, price: form["price"].value, category: form["category"].value
 
         }
+
         ProductAPI.createProduct(data)
             .then(
                 data => {
