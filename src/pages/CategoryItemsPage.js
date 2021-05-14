@@ -1,45 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import Items from "../container/Items";
+import ProductAPI from "../services/ProductAPI";
 
 export default function CategoryItemsPage(props) {
-    const [products, setProducts] = useState([
-        {
-            product_id: 1,
-            productName: "iphone",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 500,
-            category: "Electronics"
-        },
-        {
-            product_id: 2,
-            productName: "Pant",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 500,
-            category: "Clothes"
-        },
-        {
-            product_id: 3,
-            productName: "iphone",
-            description: "good phone",
-            image: "https://picsum.photos/800",
-            isSold: false,
-            price: 600,
-            category: "Electronics"
-        },
-        {
-            product_id: 4,
-            productName: "T-shirt",
-            description: "good phone",
-            image: "https://i.imgur.com/1GrakTl.jpg",
-            isSold: false,
-            price: 500,
-            category: "Clothes"
-        }
-    ]);
+    const [products, setProducts] = useState([]);
+
+    useEffect(function (){
+
+        ProductAPI.listByCategory(props.category).then(response => setProducts(response.data));
+
+
+
+    },[])
 
     return (
         <div>

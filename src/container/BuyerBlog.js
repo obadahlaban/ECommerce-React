@@ -69,10 +69,10 @@ const BuyerBlog = () => {
                                         {/*<Route path="/buyer/reviews" component={Review}/>*/}
                                         <Route path="/buyer/items" component={AllItemsPage}/>
                                         <Route path="/buyer/clothes">
-                                            <CategoryItemsPage category="clothes"/>
+                                            <CategoryItemsPage key="clothes" category="clothes"/>
                                         </Route>
                                         <Route path="/buyer/electronics">
-                                            <CategoryItemsPage category="electronics"/>
+                                            <CategoryItemsPage key="electronics" category="electronics"/>
                                         </Route>
 
 
