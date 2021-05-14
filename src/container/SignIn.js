@@ -8,7 +8,7 @@ const SignIn = (props) => {
 
     return (
 
-        <form className=" position-absolute top-50 start-50 translate-middle card">
+        <form className=" position-absolute top-50 start-50 translate-middle card" >
 
             <h1 className="h3 mb-3 fw-normal card-header">Please sign in</h1>
 

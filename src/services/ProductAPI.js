@@ -12,6 +12,9 @@ class ProductAPI extends BaseAPI {
             headers: this.headers
         });
     }
+    createProduct(product) {
+        return axios.post(this.baseUrl + '/products', product);
+    }
 }
 
 export default new ProductAPI();

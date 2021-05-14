@@ -1,9 +1,10 @@
 import React from "react";
 
 const SignUp = () => {
-const handleSubmit = () => {
+    const handleSubmit = () => {
+    
+    }
 
-}
     return (
 
         <form className="w-50 position-absolute top-50 start-50 translate-middle row g-3 needs-validation" onSubmit={handleSubmit}>
