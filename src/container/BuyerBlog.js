@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Link, Route, Switch} from 'react-router-dom';
 import {APIConfig} from "../store/API-Config";
 import ShoppingCart from "./shoppingCart/ShoppingCart";
@@ -7,11 +7,14 @@ import {LogIn} from "../store/LogIn";
 import {LikedPosts} from "../store/LikedPosts";
 import AllItemsPage from "../pages/AllItemsPage";
 import CategoryItemsPage from "../pages/CategoryItemsPage";
+import {AuthenticatedUserData} from "../store/AuthenticatedUserData";
 
 
 const BuyerBlog = () => {
+    const {authenticated, setAuthenticated} = useContext(AuthenticatedUserData);
     const [username, setUsername] = useState(false);
     const [likedProduct, setLikedProduct] = useState([]);
+
 
     return (
         <APIConfig.Provider value={'http://localhost:8080/posts/'}>
@@ -54,7 +57,11 @@ const BuyerBlog = () => {
                                     </li>
                                 </ul>
                                 <form className="d-flex">
-                                    <Link to="/signIn"><label className="nav-link">Sign In</label> </Link>
+                                    <Link to="/signIn">
+                                        <label className="nav-link">
+                                            {authenticated ?? 'Sign In'}
+                                        </label>
+                                    </Link>
                                 </form>
                             </div>
                         </div>
