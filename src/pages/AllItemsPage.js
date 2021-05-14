@@ -6,7 +6,10 @@ export default function AllItemsPage() {
     const [products, setProducts] = useState([]);
 
     useEffect(function () {
-        ProductAPI.list().then(response => setProducts(response.data));
+        ProductAPI.list().then(response => {
+            console.log(response);
+            setProducts(response.data);
+        });
     }, [])
 
     return (

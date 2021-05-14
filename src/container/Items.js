@@ -14,6 +14,7 @@ const Items = (props) => {
                     isSold={product.isSold}
                     price={product.price}
                     category={product.category}
+                    product={product}
                 />
             </div>
         )

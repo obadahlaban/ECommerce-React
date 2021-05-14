@@ -1,25 +1,6 @@
 import React, {useState} from "react";
 
 const Review = (props) => {
-    const [reviews, setReviews] = useState([
-        {
-            "reviewer_name": "obadah",
-            "review": "It is sooo good."
-        },
-        {
-            "reviewer_name": "barbara palvin",
-            "review": "Yes...I ordered one initially to give it a test run and just ordered 5 more and didn't have to re-measure or anything."
-        },
-        {
-            "reviewer_name": "brad pitt",
-            "review": "Yes. I love this T-shirt. It was exactly the same size after I washed it and it fits me perfectly!\n."
-        },
-        {
-            "reviewer_name": "abraham lincoln",
-            "review": "The label says: \"Made in the USA using fabric from other countries\" The T-Shirt is very comfortable and well made. It fits me perfectly."
-        },
-    ]);
-
     return (
 
         <div className="accordion" id={"accordionExample" + props.id}>
@@ -66,7 +47,7 @@ const Review = (props) => {
                         </div>
 
                         <ul className="list-group text-start mt-2 ">
-                            {reviews.map(review => {
+                            {props.product.reviews.map(review => {
                                 return (
                                     <li className="text-secondary list-group-item">
                                         <b>{review.reviewer_name}:</b> {review.review}</li>
