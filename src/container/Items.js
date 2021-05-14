@@ -5,7 +5,7 @@ const Items = (props) => {
 
     const rProducts = props.items.map(product => {
         return (
-            <div className="col-6">
+            <div className="col-4 mb-4">
                 <Item
                     id={product.product_id}
                     productName={product.productName}

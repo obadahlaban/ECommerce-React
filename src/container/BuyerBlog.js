@@ -47,22 +47,15 @@ const BuyerBlog = () => {
                                                 <li className="dropdown-item">Electronics</li>
                                             </Link>
                                             <Link to="/buyer/clothes">
-                                                <li className="dropdown-item">Clothes
-                                                </li>
+                                                <li className="dropdown-item">Clothes</li>
                                             </Link>
 
                                         </ul>
                                     </li>
                                 </ul>
                                 <form className="d-flex">
-                                    <Link to="/buyer/shoppingCart" className="nav-link">Shopping</Link>
-
-
-                                    <label className="nav-link"><Link to="/signIn">Sign In </Link></label>
-
-
+                                    <Link to="/signIn"><label className="nav-link">Sign In</label> </Link>
                                 </form>
-
                             </div>
                         </div>
                     </nav>
